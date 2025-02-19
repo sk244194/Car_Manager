@@ -1,0 +1,56 @@
+body{
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial;
+    height: 100vh;
+    padding: 15px;
+    /* background-image: url('./pexels-mikebirdy-1335077.jpg'); */
+    background-attachment: fixed;
+    background-position: center;
+
+}
+h1{
+    font-size: 100px;
+    font-weight: lighter;
+    text-align: center;
+    color: rgb(3, 47, 3);
+    /* color: red; */
+    font-family: Pussycat, Algerian, Broadway;
+    text-decoration: underline dashed;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 2px black;
+}
+
+/* Use `#` for id selectors and `.` for class selectors */
+/* Also can write #Sign */
+.container form #Sign{
+    font-size: large;
+    background-color: lightgreen;
+}
+
+
+.SignUp{
+    width: 250px;
+    height: 340px;
+    color:beige;
+    background: linear-gradient(to top, #3075d0 0%, #330867 100%);
+    position: relative;
+    padding: 10px;
+    border-radius: 10px;;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 150px;
+    width: 150px;
+    border-color: greenyellow;
+    justify-content: center;
+    align-items: center;
+    background-color: lightpink;
+
+
+}
