@@ -7,4 +7,12 @@ async function handleSignUp(req, res){
     })
 }
 
-module.exports = {handleSignUp};
+async function handleLogin(req, res){
+    const {email,password} = req.body;
+    console.log(email,password);
+    const user = await URL.findOne({email});
+    if(user.password === password){
+        res.send('Login Success'); 
+    }
+}
+module.exports = {handleSignUp,handleLogin};

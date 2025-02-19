@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './signup.css';  // Use plain CSS import
 import axios from "axios";
+import {Link} from 'react-router-dom';
 
 function SignUp() {
     const [data, setData] = useState({ email: '', password: '' });
@@ -42,7 +43,7 @@ function SignUp() {
                     />
                     <button id="Sign" type="submit">Sign Up</button>
                     <p>
-                        <a href="/signin">Already have an account?</a>
+                        Already have an account? <Link to="/login">Login</Link>
                     </p>
                 </form>
             </div>

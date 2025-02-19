@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const URL = require('./models/url');
 const cors = require('cors');
 const connectToMongoDB = require('./connect');
-const { handleSignUp } = require('./controllers/url');
+const { handleSignUp , handleLogin } = require('./controllers/url');
 
 const app = express();
 
@@ -26,7 +26,12 @@ app.post('/api/auth/signup', async (req, res) => {
     await handleSignUp(req, res);
 
     res.send("User Submitted Successfully");
-})
+});
+
+app.post('/api/auth/login', async (req, res) => {
+    await handleLogin(req, res);
+    
+});
 
 app.listen(5000,() => {
     console.log('Server Started');
