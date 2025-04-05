@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const URL = require('./models/url');
 const cors = require('cors');
 const connectToMongoDB = require('./connect');
-const { handleSignUp , handleLogin } = require('./controllers/url');
+const { handleSignUp , handleLogin, handleimage } = require('./controllers/url');
 
 const app = express();
 
@@ -32,6 +32,12 @@ app.post('/api/auth/login', async (req, res) => {
     await handleLogin(req, res);
     
 });
+
+app.post('/api/auth/imageUpload', async (req, res) => {
+    await handleimage(req,res);
+
+    res.send('Image Uploaded');
+})
 
 app.listen(5000,() => {
     console.log('Server Started');

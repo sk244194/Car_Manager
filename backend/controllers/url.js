@@ -1,4 +1,5 @@
 const URL = require('../models/url');
+const ImageURL = require('../models/image');
 
 async function handleSignUp(req, res){
     await URL.create({
@@ -9,10 +10,19 @@ async function handleSignUp(req, res){
 
 async function handleLogin(req, res){
     const {email,password} = req.body;
+    mail = email;
     console.log(email,password);
     const user = await URL.findOne({email});
     if(user.password === password){
         res.send('Login Success'); 
     }
+    
 }
-module.exports = {handleSignUp,handleLogin};
+
+async function handleimage(req, res){
+    await ImageURL.create({
+        image: req.body.file,
+        user_id: mail
+    })
+}
+module.exports = {handleSignUp, handleLogin, handleimage};

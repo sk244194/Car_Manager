@@ -3,10 +3,11 @@ import './signup.css';  // Use plain CSS import
 import axios from "axios";
 import {Link} from 'react-router-dom';
 
+
 function SignUp() {
     const [data, setData] = useState({ email: '', password: '' });
 
-    const handleChange = (event) => {
+    function handleChange(event) {
         setData({ ...data, [event.target.name]: event.target.value });
     };
 
