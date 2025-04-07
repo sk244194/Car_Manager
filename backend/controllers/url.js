@@ -1,10 +1,12 @@
 const URL = require('../models/url');
 const ImageURL = require('../models/image');
+const bcrypt = require('bcrypt')
 
 async function handleSignUp(req, res){
+    const hashedpassword = await bcrypt.hash(req.body.password,10)
     await URL.create({
         email: req.body.email,
-        password: req.body.password
+        password: hashedpassword
     })
 }
 
@@ -13,8 +15,13 @@ async function handleLogin(req, res){
     mail = email;
     console.log(email,password);
     const user = await URL.findOne({email});
-    if(user.password === password){
-        res.send('Login Success'); 
+
+    if (user){
+        console.log(user.password);
+        const check = await bcrypt.compare(password,user.password)
+        if (check){
+            res.send('Login Successful')
+        }
     }
     
 }
