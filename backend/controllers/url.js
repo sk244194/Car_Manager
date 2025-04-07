@@ -1,6 +1,8 @@
 const URL = require('../models/url');
 const ImageURL = require('../models/image');
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken');
+const secret = 'SuperSoup'
 
 async function handleSignUp(req, res){
     const hashedpassword = await bcrypt.hash(req.body.password,10)
@@ -12,7 +14,7 @@ async function handleSignUp(req, res){
 
 async function handleLogin(req, res){
     const {email,password} = req.body;
-    mail = email;
+    // mail = email;
     console.log(email,password);
     const user = await URL.findOne({email});
 
@@ -20,18 +22,22 @@ async function handleLogin(req, res){
         console.log(user.password);
         const check = await bcrypt.compare(password,user.password)
         if (check){
-            res.send('Login Successful')
+            const token = jwt.sign({email : email,password : user.password},secret)
+            res.json({message : "Login Successful", token})
+        }
+        else{
+            res.json({message : "Failed"})
         }
     }
     
 }
 
 async function handleimage(req, res){
-    console.log(`mail : ${mail}`)
+    // console.log(`mail : ${mail}`)
 
     await ImageURL.create({
         image: req.body.image,
-        user_id: mail
+        user_id: req.user.email
     })
 }
 module.exports = {handleSignUp, handleLogin, handleimage};

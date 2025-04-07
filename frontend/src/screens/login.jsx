@@ -15,6 +15,10 @@ function Login() {
     try {
       const res = await axios.post('http://localhost:5000/api/auth/login', data);
       // alert(res.data);
+      const token = res.data.token;
+
+      localStorage.setItem('token',token);
+
       navigate('/imageUpload')
     } catch (error) {
       alert(error.response?.data?.error || 'Wrong Credentials');

@@ -4,7 +4,8 @@ const URL = require('./models/url');
 const cors = require('cors');
 const connectToMongoDB = require('./connect');
 const { handleSignUp , handleLogin, handleimage } = require('./controllers/url');
-
+const jwt = require('jsonwebtoken')
+const secret = 'SuperSoup';
 
 const app = express();
 
@@ -20,6 +21,22 @@ connectToMongoDB('mongodb://localhost:27017/Car_Manager')
 app.use(cors());
 app.use(express.json());
 
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader) { 
+        res.status(401).send('Access Denied')
+    }
+
+    const token = authHeader.split(' ')[1];
+    jwt.verify(token, secret, (err, user) => {
+        if (err) {
+            res.send('Invalid Token')
+        }
+    req.user = user;
+    next();
+    })
+};
 
 
 app.post('/api/auth/signup', async (req, res) => {
@@ -34,7 +51,7 @@ app.post('/api/auth/login', async (req, res) => {
     
 });
 
-app.post('/api/auth/imageUpload', async (req, res) => {
+app.post('/api/auth/imageUpload', authenticateToken, async (req, res) => {
     await handleimage(req,res);
 
     res.send('Image Uploaded');

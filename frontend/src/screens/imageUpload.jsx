@@ -15,9 +15,12 @@ export function ImageUpload(){
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const res = await axios.post('http://localhost:5000/api/auth/imageUpload',{ image: imagepreview });
-            alert('Successful')
-            // console.log(res);
+            const token = localStorage.getItem('token');
+            const response = await axios.post(
+            'http://localhost:5000/api/auth/imageUpload',
+                { image: imagepreview },
+                { headers: { authorization: `Bearer ${token}` } }
+            );
         }
         catch (error) {
             alert(error.response?.data?.error || 'Failed');
