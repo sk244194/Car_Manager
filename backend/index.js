@@ -63,6 +63,9 @@ app.post('/api/auth/login', async (req, res) => {
     await handleLogin(req, res);
     
 });
+const path = require('path');
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.post('/api/auth/imageUpload', authenticateToken, upload.single('image'),  async (req, res) => {
     await ImageURL.create({
@@ -71,6 +74,16 @@ app.post('/api/auth/imageUpload', authenticateToken, upload.single('image'),  as
     });
 
     return res.send('Image Uploaded');
+})
+
+app.get('/api/cars',async (req,res) => {
+    try{
+        const cars = await ImageURL.find({});
+        return res.json(cars)
+    }
+    catch (err){
+        console.error(err);
+    }
 })
 
 app.listen(5000,() => {
