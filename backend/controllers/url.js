@@ -32,12 +32,4 @@ async function handleLogin(req, res){
     
 }
 
-async function handleimage(req, res){
-    // console.log(`mail : ${mail}`)
-
-    await ImageURL.create({
-        image: req.body.image,
-        user_id: req.user.email
-    })
-}
-module.exports = {handleSignUp, handleLogin, handleimage};
+module.exports = {handleSignUp, handleLogin};

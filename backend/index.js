@@ -1,11 +1,24 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const URL = require('./models/url');
+const ImageURL = require('./models/image');
 const cors = require('cors');
 const connectToMongoDB = require('./connect');
-const { handleSignUp , handleLogin, handleimage } = require('./controllers/url');
+const { handleSignUp , handleLogin } = require('./controllers/url');
+const multer = require('multer');
 const jwt = require('jsonwebtoken')
 const secret = 'SuperSoup';
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './uploads')
+    },
+    filename: function (req, file, cb) {
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+      cb(null, uniqueSuffix + file.originalname) 
+    }
+  })
+  
+  const upload = multer({ storage: storage })
 
 const app = express();
 
@@ -25,13 +38,13 @@ function authenticateToken(req, res, next) {
     const authHeader = req.headers.authorization;
 
     if (!authHeader) { 
-        res.status(401).send('Access Denied')
+        return res.status(401).send('Access Denied')
     }
 
     const token = authHeader.split(' ')[1];
     jwt.verify(token, secret, (err, user) => {
         if (err) {
-            res.send('Invalid Token')
+            return res.send('Invalid Token')
         }
     req.user = user;
     next();
@@ -43,7 +56,7 @@ app.post('/api/auth/signup', async (req, res) => {
     console.log(req.body)
     await handleSignUp(req, res);
 
-    res.send("User Submitted Successfully");
+    return res.send("User Submitted Successfully");
 });
 
 app.post('/api/auth/login', async (req, res) => {
@@ -51,10 +64,13 @@ app.post('/api/auth/login', async (req, res) => {
     
 });
 
-app.post('/api/auth/imageUpload', authenticateToken, async (req, res) => {
-    await handleimage(req,res);
+app.post('/api/auth/imageUpload', authenticateToken, upload.single('image'),  async (req, res) => {
+    await ImageURL.create({
+        image: req.file.path,
+        user_id: req.user.email 
+    });
 
-    res.send('Image Uploaded');
+    return res.send('Image Uploaded');
 })
 
 app.listen(5000,() => {
