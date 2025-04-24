@@ -86,6 +86,28 @@ app.get('/api/cars',async (req,res) => {
     }
 })
 
+app.get('/api/mycars', authenticateToken, async (req, res) => {
+    try {
+      const userCars = await ImageURL.find({ user_id: req.user.email });
+      console.log(userCars);
+      res.json(userCars);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Error retrieving your cars');
+    }
+  });
+
+app.delete('/api/mycars/:id', authenticateToken, async (req, res) => {
+try {
+    const car = await ImageURL.findOne({ _id: req.params.id, user_id: req.user.email });
+    if (!car) return res.status(404).send('Car not found or unauthorized');
+    await ImageURL.deleteOne({ _id: req.params.id });
+    res.send('Car deleted successfully');
+} catch (error) {
+    res.status(500).send('Error deleting car');
+}
+});
+
 app.listen(5000,() => {
     console.log('Server Started');
 })

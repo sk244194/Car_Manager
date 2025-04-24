@@ -47,6 +47,7 @@ export function ImageUpload(){
             <input type = 'file' placeholder='Upload Image' onChange={handleimage}/>
             <button type = 'submit' onClick={handleSubmit}>Submit</button>
             <p>See all Cars<Link to = '/cars'>Click Here</Link></p>
+            <p>See and edit my Cars<Link to = '/mycars'>Mycars</Link></p>
         </div>
     )
 }

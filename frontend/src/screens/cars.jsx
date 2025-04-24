@@ -7,7 +7,7 @@ export function AllCarsPage() {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/cars'); // Fetch car data from backend
+        const response = await axios.get('http://localhost:5000/api/cars'); 
         setCars(response.data); // Set car data in state
       } catch (error) {
         console.error('Error fetching cars:', error);
@@ -24,7 +24,7 @@ export function AllCarsPage() {
         {cars.map((car) => (
           <div key={car._id} style={{ margin: '10px' }}>
             <img src={`http://localhost:5000/${car.image}`} alt="Car" style={{ width: '200px', height: 'auto' }} />
-            <p>{car.user_id}</p> {/* Display user ID or other details */}
+            <p>{car.user_id}</p> 
           </div>
         ))}
       </div>
