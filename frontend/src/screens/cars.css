@@ -1,0 +1,76 @@
+.cars-page {
+    min-height: 100vh;
+    background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    padding: 40px 0;
+  }
+  
+  .cars-title {
+    text-align: center;
+    color: #2d3a4b;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+  }
+  
+  .cars-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 28px;
+  }
+  
+  .car-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.13);
+    padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 220px;
+    max-width: 260px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .car-card:hover {
+    transform: translateY(-7px) scale(1.03);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.17);
+  }
+  
+  .car-card img {
+    width: 200px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(245, 87, 108, 0.08);
+  }
+  
+  .car-card p {
+    color: #444;
+    font-size: 1rem;
+    margin: 4px 0;
+    text-align: center;
+    word-break: break-word;
+  }
+  
+  .car-card button {
+    margin-top: 10px;
+    padding: 0.5rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .car-card button:hover {
+    background: linear-gradient(90deg, #f5576c 0%, #f093fb 100%);
+    box-shadow: 0 4px 16px rgba(245, 87, 108, 0.13);
+  }
+  

@@ -70,7 +70,9 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.post('/api/auth/imageUpload', authenticateToken, upload.single('image'),  async (req, res) => {
     await ImageURL.create({
         image: req.file.path,
-        user_id: req.user.email 
+        user_id: req.user.email,
+        description: req.body.description,
+        contact: req.body.contact
     });
 
     return res.send('Image Uploaded');

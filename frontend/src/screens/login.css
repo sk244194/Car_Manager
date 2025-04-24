@@ -1,14 +1,12 @@
-/* signup.css */
-
 body {
-    background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+    background: linear-gradient(120deg, #f6d365, #fda085);
     min-height: 100vh;
     font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
     padding: 0;
   }
   
-  .Sign {
+  .Login {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,7 +22,7 @@ body {
     letter-spacing: 1px;
   }
   
-  .container {
+  .login-container {
     background: #fff;
     padding: 2.5rem 2rem 2rem 2rem;
     border-radius: 20px;
@@ -35,14 +33,14 @@ body {
     min-width: 350px;
   }
   
-  .SignUp {
+  .login-form {
     display: flex;
     flex-direction: column;
     width: 100%;
     gap: 1.2rem;
   }
   
-  .SignUp input {
+  .login-form input {
     padding: 0.8rem 1rem;
     border: 1px solid #b2bec3;
     border-radius: 8px;
@@ -51,15 +49,15 @@ body {
     outline: none;
   }
   
-  .SignUp input:focus {
-    border-color: #6c63ff;
+  .login-form input:focus {
+    border-color: #f6d365;
   }
   
-  #Sign {
+  #LoginBtn {
     padding: 0.8rem;
     border: none;
     border-radius: 8px;
-    background: linear-gradient(90deg, #6c63ff 0%, #48c6ef 100%);
+    background: linear-gradient(90deg, #f6d365 0%, #fda085 100%);
     color: #fff;
     font-size: 1.1rem;
     font-weight: bold;
@@ -68,26 +66,8 @@ body {
     margin-top: 10px;
   }
   
-  #Sign:hover {
-    background: linear-gradient(90deg, #48c6ef 0%, #6c63ff 100%);
-    box-shadow: 0 4px 16px rgba(76, 110, 245, 0.15);
-  }
-  
-  .SignUp p {
-    text-align: center;
-    color: #636e72;
-    font-size: 1rem;
-  }
-  
-  .SignUp a {
-    color: #6c63ff;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-  
-  .SignUp a:hover {
-    color: #48c6ef;
-    text-decoration: underline;
+  #LoginBtn:hover {
+    background: linear-gradient(90deg, #fda085 0%, #f6d365 100%);
+    box-shadow: 0 4px 16px rgba(250, 190, 88, 0.15);
   }
   

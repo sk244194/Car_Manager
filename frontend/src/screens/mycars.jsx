@@ -1,8 +1,9 @@
 import axios from "axios";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
+import './cars.css'; 
+
 export function MyCars() {
   const [cars, setCars] = useState([]);
-  console.log(cars);
 
   useEffect(() => {
     const fetchMyCars = async () => {
@@ -11,7 +12,6 @@ export function MyCars() {
         headers: { Authorization: `Bearer ${token}` }
       });
       setCars(response.data); 
-      console.log(response.data)
     };
     fetchMyCars();
   }, []);
@@ -30,12 +30,14 @@ export function MyCars() {
   };
 
   return (
-    <div>
-      <h1>My Cars</h1>
-      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+    <div className="cars-page">
+      <h1 className="cars-title">My Cars</h1>
+      <div className="cars-list">
         {cars.map((car) => (
-          <div key={car._id} style={{ margin: '10px' }}>
-            <img src={`http://localhost:5000/${car.image}`} alt="Car" style={{ width: '200px', height: 'auto' }} />
+          <div key={car._id} className="car-card">
+            <img src={`http://localhost:5000/${car.image}`} alt="Car" />
+            <p>Contact: {car.contact}</p>
+            <p>Description: {car.description}</p>
             <button onClick={() => handleDelete(car._id)}>Delete</button>
           </div>
         ))}
