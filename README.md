@@ -41,4 +41,4 @@ car-manager/
     └── public/
 </pre>
 
-If you found this project helpful or inspiring, please consider giving it a ⭐ on GitHub!
+
