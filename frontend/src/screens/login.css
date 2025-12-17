@@ -1,73 +1,61 @@
-body {
-    background: linear-gradient(120deg, #f6d365, #fda085);
-    min-height: 100vh;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .Login {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-  }
-  
-  h1 {
-    color: #2d3a4b;
-    margin-bottom: 20px;
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-  }
-  
-  .login-container {
-    background: #fff;
-    padding: 2.5rem 2rem 2rem 2rem;
-    border-radius: 20px;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 350px;
-  }
-  
-  .login-form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 1.2rem;
-  }
-  
-  .login-form input {
-    padding: 0.8rem 1rem;
-    border: 1px solid #b2bec3;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border-color 0.2s;
-    outline: none;
-  }
-  
-  .login-form input:focus {
-    border-color: #f6d365;
-  }
-  
-  #LoginBtn {
-    padding: 0.8rem;
-    border: none;
-    border-radius: 8px;
-    background: linear-gradient(90deg, #f6d365 0%, #fda085 100%);
-    color: #fff;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s;
-    margin-top: 10px;
-  }
-  
-  #LoginBtn:hover {
-    background: linear-gradient(90deg, #fda085 0%, #f6d365 100%);
-    box-shadow: 0 4px 16px rgba(250, 190, 88, 0.15);
-  }
-  
+/* Login Clean Style */
+
+.Login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 70px);
+  padding: 2rem;
+}
+
+.Login h1 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--text);
+}
+
+.login-container {
+  background: var(--surface);
+  padding: 2.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.login-form input {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--background);
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.login-form input:focus {
+  border-color: var(--primary);
+}
+
+#LoginBtn {
+  padding: 0.75rem;
+  border: none;
+  border-radius: var(--radius);
+  background-color: var(--primary);
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+#LoginBtn:hover {
+  background-color: var(--primary-hover);
+}

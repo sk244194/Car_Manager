@@ -1,13 +1,13 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './imageupload.css'; 
+import './imageupload.css';
 
 export function ImageUpload() {
   const [imagepreview, setimagepreview] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
-  const [description, setDescription] = useState(""); 
-  const [contact, setContact] = useState("");         
+  const [description, setDescription] = useState("");
+  const [contact, setContact] = useState("");
 
   const handleimage = (event) => {
     const file = event.target.files[0];
@@ -23,12 +23,12 @@ export function ImageUpload() {
     try {
       const formdata = new FormData();
       formdata.append('image', selectedFile);
-      formdata.append('description', description); 
-      formdata.append('contact', contact);         
+      formdata.append('description', description);
+      formdata.append('contact', contact);
 
       const token = localStorage.getItem('token');
       await axios.post(
-        'http://localhost:5000/api/auth/imageUpload',
+        'https://car-manager-backend-3gp0.onrender.com/api/auth/imageUpload',
         formdata,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -41,6 +41,11 @@ export function ImageUpload() {
 
   return (
     <div className="upload-page">
+      <div className="top-right-link">
+        <p>
+          See all Cars <Link to='/cars'>Click Here</Link>
+        </p>
+      </div>
       <form className="upload-form" onSubmit={handleSubmit}>
         <input type='file' onChange={handleimage} required />
         <input
@@ -64,12 +69,9 @@ export function ImageUpload() {
           <img src={imagepreview} alt="Preview" />
         </div>
       )}
-      <div className="upload-links">
+      <div className="centered-link">
         <p>
-          See all Cars <Link to='/cars'>Click Here</Link>
-        </p>
-        <p>
-          See and edit my Cars <Link to='/mycars'>Mycars</Link>
+          See and edit my Cars <Link to='/mycars'>Click here</Link>
         </p>
       </div>
     </div>

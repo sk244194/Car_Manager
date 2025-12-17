@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import './cars.css'; 
+import './cars.css';
 
 export function MyCars() {
   const [cars, setCars] = useState([]);
@@ -8,10 +8,10 @@ export function MyCars() {
   useEffect(() => {
     const fetchMyCars = async () => {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/mycars', {
+      const response = await axios.get('https://car-manager-backend-3gp0.onrender.com/api/mycars', {
         headers: { Authorization: `Bearer ${token}` }
       });
-      setCars(response.data); 
+      setCars(response.data);
     };
     fetchMyCars();
   }, []);
@@ -19,7 +19,7 @@ export function MyCars() {
   const handleDelete = async (id) => {
     const token = localStorage.getItem('token');
     try {
-      await axios.delete(`http://localhost:5000/api/mycars/${id}`, {
+      await axios.delete(`https://car-manager-backend-3gp0.onrender.com/api/mycars/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setCars(cars.filter(car => car._id !== id));
@@ -35,7 +35,7 @@ export function MyCars() {
       <div className="cars-list">
         {cars.map((car) => (
           <div key={car._id} className="car-card">
-            <img src={`http://localhost:5000/${car.image}`} alt="Car" />
+            <img src={car.image.startsWith('http') ? car.image : `https://car-manager-backend-3gp0.onrender.com/${car.image}`} alt="Car" />
             <p>Contact: {car.contact}</p>
             <p>Description: {car.description}</p>
             <button onClick={() => handleDelete(car._id)}>Delete</button>

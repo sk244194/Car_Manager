@@ -1,93 +1,121 @@
+/* Image Upload Clean Style */
 .upload-page {
-    min-height: 100vh;
-    background: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    padding-top: 40px;
-  }
-  
-  .upload-form {
-    background: #fff;
-    padding: 2rem 2.5rem 2rem 2.5rem;
-    border-radius: 18px;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 340px;
-    gap: 1.2rem;
-  }
-  
-  .upload-form input[type="file"] {
-    border: none;
-    background: none;
-    margin-bottom: 0.5rem;
-  }
-  
-  .upload-form input[type="text"],
-  .upload-form input[type="number"] {
-    width: 100%;
-    padding: 0.8rem 1rem;
-    border: 1px solid #b2bec3;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border-color 0.2s;
-    outline: none;
-  }
-  
-  .upload-form input[type="text"]:focus,
-  .upload-form input[type="number"]:focus {
-    border-color: #f5576c;
-  }
-  
-  .upload-form button[type="submit"] {
-    padding: 0.8rem;
-    border: none;
-    border-radius: 8px;
-    background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
-    color: #fff;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s;
-    margin-top: 10px;
-  }
-  
-  .upload-form button[type="submit"]:hover {
-    background: linear-gradient(90deg, #f5576c 0%, #f093fb 100%);
-    box-shadow: 0 4px 16px rgba(245, 87, 108, 0.15);
-  }
-  
-  .upload-preview {
-    margin-top: 18px;
-    text-align: center;
-  }
-  
-  .upload-preview img {
-    width: 220px;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(245, 87, 108, 0.12);
-    margin-bottom: 10px;
-  }
-  
-  .upload-links {
-    margin-top: 28px;
-    text-align: center;
-  }
-  
-  .upload-links a {
-    color: #f5576c;
-    text-decoration: none;
-    font-weight: 500;
-    margin: 0 5px;
-    transition: color 0.2s;
-  }
-  
-  .upload-links a:hover {
-    color: #f093fb;
-    text-decoration: underline;
-  }
-  
+  min-height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+}
+
+.top-right-link {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}
+
+.top-right-link p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.top-right-link a {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.top-right-link a:hover {
+  text-decoration: underline;
+}
+
+.centered-link {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.centered-link p {
+  color: var(--text-muted);
+}
+
+.centered-link a {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.centered-link a:hover {
+  text-decoration: underline;
+}
+
+.upload-form {
+  background: var(--surface);
+  padding: 2.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.upload-form input[type="text"],
+.upload-form input[type="number"] {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--background);
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.upload-form input:focus {
+  border-color: var(--primary);
+}
+
+.upload-form input[type="file"] {
+  padding: 0.75rem;
+  background-color: var(--background);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  color: var(--text-muted);
+}
+
+.upload-form input[type="file"]:hover {
+  border-color: var(--text-muted);
+}
+
+.upload-form button {
+  padding: 0.75rem;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.upload-form button:hover {
+  background-color: var(--primary-hover);
+}
+
+.upload-preview {
+  width: 100%;
+  max-width: 500px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.upload-preview img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
